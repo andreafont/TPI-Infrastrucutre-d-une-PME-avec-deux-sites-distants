@@ -1,0 +1,37 @@
+enable
+
+conf t
+
+hostname Kicroit-BU-Router1
+
+enable secret Kicroit24-Router1_MdP$
+
+Line console 0
+password Kicroit24-Router1_MdP$
+Login
+exit
+
+line vty 0 4
+password Kicroit24-Router1_MdP$
+login
+transport input ssh
+exit
+
+service password-encryption
+
+no ip domain-lookup
+
+banner motd # Routeur Kicroit acces interdit aux personnes non autorises #
+
+int G0/0
+ip address 192.168.0.1 255.255.255.252
+no shutdown
+exit
+
+int g0/1
+ip address 192.168.10.1 255.255.255.252
+no shutdown
+end
+
+write
+

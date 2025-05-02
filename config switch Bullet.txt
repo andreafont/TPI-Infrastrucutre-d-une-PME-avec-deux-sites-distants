@@ -1,0 +1,29 @@
+ena 
+
+conf t
+
+hostname Kicroit-BU-Switch1
+
+enable secret Kicroit24-Switch1_MdP$
+
+Line console 0
+password Kicroit24-Switch1_MdP$
+Login
+exit
+
+line vty 0 4
+password Kicroit24-Switch1_MdP$
+login
+transport input ssh
+exit
+
+service password-encryption
+
+no ip domain-lookup
+
+banner motd # Switch Kicroit acces interdit aux personnes non autorises #
+
+int range fa0/6-8
+shutdown
+end 
+write
