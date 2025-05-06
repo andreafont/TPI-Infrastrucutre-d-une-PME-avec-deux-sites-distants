@@ -1,0 +1,5 @@
+choses a faire ou améliorer TPI
+
+GPO (l'imprimante ne se déploie pas toute seulw)
+Changer le document pour les autorisations NTFS
+

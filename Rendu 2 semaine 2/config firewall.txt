@@ -1,0 +1,24 @@
+Execute factoryreset. 
+compte admin
+pas de mot de passe
+
+Configuration initiale
+
+config system interface
+edit wan1 
+set mode static
+set ip 192.168.10.2 255.255.255.252
+set allowaccess ping https ssh http
+next 
+end
+
+config router static
+edit 1
+set gateway 192.168.10.1
+set device wan1 
+next
+end
+
+config system global
+set hostname Kicroit-BU-Firewall1 
+end 
