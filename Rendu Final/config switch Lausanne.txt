@@ -1,0 +1,55 @@
+enable
+
+conf t
+
+hostname Kicroit-LA-Switch1
+
+enable secret Kicroit24-Switch2_MdP$
+
+Line console 0
+password Kicroit24-Switch2_MdP$
+Login
+exit
+
+line vty 0 4
+password Kicroit24-Switch2_MdP$
+login
+transport input ssh
+exit
+
+service password-encryption
+
+no ip domain-lookup
+
+banner motd # Switch Kicroit acces interdit aux personnes non autorises #
+
+vlan 50
+name VLAN50
+
+vlan 60
+name VLAN60
+
+int fa0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 50,60
+no shutdown
+
+int fa0/2
+switchport mode access
+switchport access vlan 60
+no shutdown
+exit
+
+int fa0/3
+switchport mode access
+switchport access vlan 50
+no shutdown
+exit
+
+int range fa0/4-8
+shutdown
+end
+
+write
+

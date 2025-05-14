@@ -1,0 +1,46 @@
+ena
+
+conf t
+
+hostname Kicroit-LA-AP1
+
+enable secret Kicroit24-Ap2_MdP$
+
+Line console 0
+password Kicroit24-Ap2_MdP$
+Login
+exit
+
+Line vty 0 4
+password Kicroit24-Ap2_MdP$
+Login
+exit
+
+service password-encryption
+
+banner motd # AccessPoint Kicroit acces interdit aux personnes non autorisees #
+
+no ip domain-lookup
+
+int bv1
+ip address 192.168.60.50 255.255.255.0 
+exit
+
+ip default-gateway 192.168.60.1
+
+dot11 ssid KicroitLA_Wifi2.4
+auth open
+auth key wpa ver 2
+wpa-psk ascii Pa$$w0rd
+guest-mode
+exit
+
+int d0
+encryption mode ciphers aes
+ssid KicroitLA_Wifi2.4
+channel 1 
+channel least-congested
+no shutdown
+end
+
+write 
